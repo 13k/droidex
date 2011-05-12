@@ -38,11 +38,14 @@ para instalação (lembre-se de habilitar a opção para instalação de pacotes
 terceiros).
 
 
-Downloads (via QR Code)
+Downloads
 ---------
 
-Na janela de Downloads aqui no Github só tem os links diretos, sem QR Code,
-aqui estão listadas as páginas que possuem a imagem para ser escaneada.
+### Link direto ###
+
+Basta acessar o link "Downloads" na [página do projeto no Github](http://github.com/13k/droidex)
+
+### Via QR Code ###
 
 Versão atual: [Droidex 1.0](http://github.com/13k/droidex/Droidex-1.0.apk/qr_code)
 
