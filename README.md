@@ -43,7 +43,9 @@ Downloads
 
 ### Link direto ###
 
-Basta acessar o link "Downloads" na [página do projeto no Github](http://github.com/13k/droidex)
+Basta acessar o link "Downloads" na [página do projeto no
+Github](http://github.com/13k/droidex) ou ir para a página de downloads
+diretamente [aqui](http://github.com/13k/droidex/archives/master).
 
 ### Via QR Code ###
 
