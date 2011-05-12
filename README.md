@@ -36,3 +36,13 @@ uma aplicação para Android para escanear QR Codes)
 Basta então fazer o download do arquivo .apk no dispositivo e ele já irá abrir
 para instalação (lembre-se de habilitar a opção para instalação de pacotes de
 terceiros).
+
+
+Downloads (via QR Code)
+---------
+
+Na janela de Downloads aqui no Github só tem os links diretos, sem QR Code,
+aqui estão listadas as páginas que possuem a imagem para ser escaneada.
+
+Versão atual: [Droidex 1.0](http://github.com/13k/droidex/Droidex-1.0.apk/qr_code)
+
