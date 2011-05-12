@@ -1,6 +1,21 @@
 Droidex
 =======
 
+Droidex é uma aplicação Android para visualizar o cardápio semanal do
+restaurante universitário do campus São Carlos da USP (ou simplesmente
+conhecido como "bandex").
+
+_Quem achou que Droidex era o nome de um robô que ficava servindo a sua mistura
+na fila do bandex, se enganou. O nome dele era Armindo._
+
+
+Requerimentos
+-------------
+
+Droidex roda em dispositivos com Android 1.6 (codenome Donut) ou superiores.
+
+Obviamente, a aplicação necessita de uma conexão com a internet para funcionar.
+
 Instalação
 ----------
 
