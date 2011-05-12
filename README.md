@@ -30,7 +30,7 @@ Na seção de Downloads na página do projeto no Github há pacotes compilados e
 prontos para instalação. O Github já gera o QR Code, que pode ser usado pra
 copiar a URL usando a câmera do celular ([QR Code na
 Wikipedia](http://en.wikipedia.org/wiki/QR_code) e [Barcode
-Scanner](https://market.android.com/details?id=com.google.zxing.client.android)
+Scanner](https://market.android.com/details?id=com.google.zxing.client.android),
 uma aplicação para Android para escanear QR Codes)
 
 Basta então fazer o download do arquivo .apk no dispositivo e ele já irá abrir
