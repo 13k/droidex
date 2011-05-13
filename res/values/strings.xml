@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Droidex</string>
+	
 	<string name="loading">Espera na fila ...</string>
+	<string name="loading_title">Carregando</string>
+	
 	<string name="empty">Cardápio não disponível!</string>
+	<string name="closed">Não tem bandex! Habib\'s?</string>
+
 	<string name="err_network">Não foi possível conectar ao site do bandex.\nVerifique se seu dispositivo tem conectividade com a internet.\nOu o site do bandex pode estar fora do ar.</string>
-	<string name="err_exception">A aplicação está em greve! (Algum erro fatal ocorreu)\nFaça sua reinvidicação para o autor por email (kbmurata@gmail.com)</string>
+	<string name="err_exception">A aplicação está em greve! (Algum erro fatal ocorreu)\nFaça sua reinvidicação para o autor por email (kbmurata@gmail.com)!</string>
+	<string name="err_xml">Algum erro aconteceu durante a leitura do cardápio.\nAvise o autor por email (kbmurata@gmail.com)!</string>
 </resources>

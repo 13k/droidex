@@ -36,7 +36,6 @@
     <!-- Required pre-setup import -->
     <import file="${sdk.dir}/tools/ant/pre_setup.xml" />
 
-
 <!-- extension targets. Uncomment the ones where you want to do custom work
      in between standard targets -->
 <!--
