@@ -16,10 +16,29 @@ Droidex roda em dispositivos com Android 1.6 (codenome Donut) ou superiores.
 
 Obviamente, a aplicação necessita de uma conexão com a internet para funcionar.
 
+
 Instalação
 ----------
 
-Droidex agora está no Android Market! Confira [aqui](http://market.android.com/details?id=org.droidex).
+Droidex agora está no Google Play! Confira [aqui][googleplay].
+
+
+Changelog
+---------
+
+### 1.2
+
+  * Corrige erro (force close) quando a conexão com a internet não está
+    disponível
+
+### 1.1
+
+  * Atualiza interface
+
+### 1.0
+
+  * Versão inicial
+
 
 Licença
 -------
@@ -39,3 +58,5 @@ Licença
 
   0. You just DO WHAT THE FUCK YOU WANT TO.
 ```
+
+[googleplay]: https://play.google.com/store/apps/details?id=org.droidex
