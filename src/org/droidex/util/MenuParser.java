@@ -25,110 +25,110 @@ import org.xmlpull.v1.XmlPullParserFactory;
 
 public class MenuParser
 {
-	private static final List<String> IGNORE_TAGS;
+    private static final List<String> IGNORE_TAGS;
 
-	static {
-		IGNORE_TAGS = new ArrayList<String>(Arrays.asList("restaurante", "data", "vazio"));
-	}
+    static {
+        IGNORE_TAGS = new ArrayList<String>(Arrays.asList("restaurante", "data", "vazio"));
+    }
 
-	public static NameOrderedDict<WeekDay> parseXML(String xml)
-		throws XmlPullParserException, IOException
-	{
-		XmlPullParser xpp = getParser(xml);
-		NameOrderedDict<WeekDay> root = new NameOrderedDict<WeekDay>();
-		Stack<DictNesting> nesting = new Stack<DictNesting>();
-		nesting.push(root);
-		String tag = "";
-		String text = "";
-		WeekDay currentDay = null;
+    public static NameOrderedDict<WeekDay> parseXML(String xml)
+        throws XmlPullParserException, IOException
+    {
+        XmlPullParser xpp = getParser(xml);
+        NameOrderedDict<WeekDay> root = new NameOrderedDict<WeekDay>();
+        Stack<DictNesting> nesting = new Stack<DictNesting>();
+        nesting.push(root);
+        String tag = "";
+        String text = "";
+        WeekDay currentDay = null;
 
-		int eventType = xpp.getEventType();
+        int eventType = xpp.getEventType();
 
-		while (eventType != XmlPullParser.END_DOCUMENT)
-		{
-			switch (eventType) {
-				case XmlPullParser.START_TAG:
-					tag = xpp.getName().toLowerCase();
+        while (eventType != XmlPullParser.END_DOCUMENT)
+        {
+            switch (eventType) {
+                case XmlPullParser.START_TAG:
+                    tag = xpp.getName().toLowerCase();
 
-					if (IGNORE_TAGS.contains(tag))
-						break;
-					
-					//L.d(nesting.size(), tag);
+                    if (IGNORE_TAGS.contains(tag))
+                        break;
+                    
+                    //L.d(nesting.size(), tag);
 
-					DictNesting dict = null;
-					IndexedName key = null;
+                    DictNesting dict = null;
+                    IndexedName key = null;
 
-					switch(nesting.size()) {
-						case 1:
-							key = new WeekDay(tag);
-							currentDay = (WeekDay) key;
-							dict = new NameOrderedDict<Meal>();
-							break;
+                    switch(nesting.size()) {
+                        case 1:
+                            key = new WeekDay(tag);
+                            currentDay = (WeekDay) key;
+                            dict = new NameOrderedDict<Meal>();
+                            break;
 
-						case 2:
-							key = new Meal(tag);
-							dict = new NameOrderedDict<Dish>();
-							break;
+                        case 2:
+                            key = new Meal(tag);
+                            dict = new NameOrderedDict<Dish>();
+                            break;
 
-						case 3:
-							key = new Dish(tag);
-							dict = new NameOrderedDict.End<String>();
-							break;
+                        case 3:
+                            key = new Dish(tag);
+                            dict = new NameOrderedDict.End<String>();
+                            break;
 
-						default: // should not happen
-							L.d("nesting level too deep: " + nesting.size() + " tag: " + tag);
-							throw new XmlPullParserException("Arquivo XML inválido");
-					}
+                        default: // should not happen
+                            L.d("nesting level too deep: " + nesting.size() + " tag: " + tag);
+                            throw new XmlPullParserException("Arquivo XML inválido");
+                    }
 
-					if ((key == null) || (dict == null))
-						break;
+                    if ((key == null) || (dict == null))
+                        break;
 
-					nesting.peek().put(key, dict);
-					nesting.push(dict);
-					break;
+                    nesting.peek().put(key, dict);
+                    nesting.push(dict);
+                    break;
 
-				case XmlPullParser.END_TAG:
-					if ((nesting.size() > 0) && (!IGNORE_TAGS.contains(tag)))
-						nesting.pop();
-					break;
+                case XmlPullParser.END_TAG:
+                    if ((nesting.size() > 0) && (!IGNORE_TAGS.contains(tag)))
+                        nesting.pop();
+                    break;
 
-				case XmlPullParser.TEXT:
-					text = xpp.getText().trim();
-					
-					if ("".equals(text))
-						break;
-					
-					switch(nesting.size()) {
-						case 1:
-							break;
-						case 2:
-							if ("data".equals(tag))
-								currentDay.setDate(text);
-							break;
-						case 3:
-							break;
-						case 4:
-							nesting.peek().setData(text);
-							break;
-						default: // should not happen
-							throw new XmlPullParserException("Arquivo XML inválido");
-					}
+                case XmlPullParser.TEXT:
+                    text = xpp.getText().trim();
+                    
+                    if ("".equals(text))
+                        break;
+                    
+                    switch(nesting.size()) {
+                        case 1:
+                            break;
+                        case 2:
+                            if ("data".equals(tag))
+                                currentDay.setDate(text);
+                            break;
+                        case 3:
+                            break;
+                        case 4:
+                            nesting.peek().setData(text);
+                            break;
+                        default: // should not happen
+                            throw new XmlPullParserException("Arquivo XML inválido");
+                    }
 
-					break;
-			}
+                    break;
+            }
 
-			eventType = xpp.next();
-		}
+            eventType = xpp.next();
+        }
 
-		return root;
-	}
+        return root;
+    }
 
-	private static XmlPullParser getParser(String xml)
-		throws XmlPullParserException
-	{
-		XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
-		XmlPullParser xpp = factory.newPullParser();
-		xpp.setInput(new StringReader(xml));
-		return xpp;
-	}
+    private static XmlPullParser getParser(String xml)
+        throws XmlPullParserException
+    {
+        XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
+        XmlPullParser xpp = factory.newPullParser();
+        xpp.setInput(new StringReader(xml));
+        return xpp;
+    }
 }

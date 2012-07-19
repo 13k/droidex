@@ -20,70 +20,70 @@ import org.droidex.util.text.WeekDay;
 import org.droidex.util.text.Meal;
 
 public class MenuListAdapter
-	extends BaseAdapter
+    extends BaseAdapter
 {
-	private Context context;
-	private WeekDay[] weekDays;
-	private NameOrderedDict<WeekDay> menu;	
-	private int resource;
+    private Context context;
+    private WeekDay[] weekDays;
+    private NameOrderedDict<WeekDay> menu;    
+    private int resource;
 
-	public MenuListAdapter(Context ctx, int res, NameOrderedDict data)
-	{
-		super();
-		
-		context = ctx;
-		menu = data;
-		resource = res;
+    public MenuListAdapter(Context ctx, int res, NameOrderedDict data)
+    {
+        super();
+        
+        context = ctx;
+        menu = data;
+        resource = res;
 
-		processMenu();
+        processMenu();
 
-		//L.d(String.format("menu: %s", menu));
-	}
+        //L.d(String.format("menu: %s", menu));
+    }
 
-	private void processMenu() {
-		weekDays = menu.keySet().toArray(new WeekDay[0]);
-	}
+    private void processMenu() {
+        weekDays = menu.keySet().toArray(new WeekDay[0]);
+    }
 
-	public int getCount() {
-		return weekDays.length;
-	}
+    public int getCount() {
+        return weekDays.length;
+    }
 
-	public Object getItem(int pos) {
-		return weekDays[pos];
-	}
+    public Object getItem(int pos) {
+        return weekDays[pos];
+    }
 
-	public long getItemId(int pos) {
-		return pos;
-	}
+    public long getItemId(int pos) {
+        return pos;
+    }
 
-	public View getView(int pos, View convertView, ViewGroup parent)
-	{
-		WeekDay weekDay = (WeekDay) getItem(pos);
-		LayoutInflater inflater = (LayoutInflater)context.getSystemService
-				(Context.LAYOUT_INFLATER_SERVICE);
-		View dayItem = inflater.inflate(resource, null);
-		TextView dayLabel = (TextView) dayItem.findViewById(R.id.menuListItem_labelText);
-		String dayName = weekDay.getDisplayName();
-		dayLabel.setText(dayName);
-		TextView dateText = (TextView) dayItem.findViewById(R.id.menuListItem_dateText);
-		String dateString = weekDay.getDate();
-		dateText.setText(dateString);
-		return dayItem;
-	}
+    public View getView(int pos, View convertView, ViewGroup parent)
+    {
+        WeekDay weekDay = (WeekDay) getItem(pos);
+        LayoutInflater inflater = (LayoutInflater)context.getSystemService
+                (Context.LAYOUT_INFLATER_SERVICE);
+        View dayItem = inflater.inflate(resource, null);
+        TextView dayLabel = (TextView) dayItem.findViewById(R.id.menuListItem_labelText);
+        String dayName = weekDay.getDisplayName();
+        dayLabel.setText(dayName);
+        TextView dateText = (TextView) dayItem.findViewById(R.id.menuListItem_dateText);
+        String dateString = weekDay.getDate();
+        dateText.setText(dateString);
+        return dayItem;
+    }
 
-	public boolean isEnabled(int pos) {
-		return true;
-	}
+    public boolean isEnabled(int pos) {
+        return true;
+    }
 
-	public int findByDayOfWeek()
-	{
-		int dow = Calendar.getInstance().get(Calendar.DAY_OF_WEEK);
-		return Arrays.binarySearch(weekDays, new WeekDay(dow));
-	}
+    public int findByDayOfWeek()
+    {
+        int dow = Calendar.getInstance().get(Calendar.DAY_OF_WEEK);
+        return Arrays.binarySearch(weekDays, new WeekDay(dow));
+    }
 
-	public NameOrderedDict<Meal> getDayMenu(int pos)
-	{
-		WeekDay day = (WeekDay) getItem(pos);
-		return (NameOrderedDict<Meal>) menu.get(day);
-	}
+    public NameOrderedDict<Meal> getDayMenu(int pos)
+    {
+        WeekDay day = (WeekDay) getItem(pos);
+        return (NameOrderedDict<Meal>) menu.get(day);
+    }
 }
