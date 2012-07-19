@@ -106,6 +106,11 @@ public class Droidex
 	{
 		hideLoading();
 
+		if (buffer == null) {
+			showError(R.string.err_network);
+			return;
+		}
+
 		String xml = "";
 
 		try {
@@ -126,14 +131,7 @@ public class Droidex
 		showMenu();
 	}
 
-	protected void onListItemClick(ListView l, View v, int pos, long id)
-	{
-		L.d("listItemClick " + pos);
-		selectedDay = pos;
-		switchToScreen(Screen.DAY_MENU);
-	}
-
-	protected void onBackPressed()
+	public void onBackPressed()
 	{
 		L.d("backPressed");
 		switch(currentScreen) {
@@ -145,6 +143,13 @@ public class Droidex
 				switchToScreen(Screen.MENU);
 				break;
 		}
+	}
+
+	protected void onListItemClick(ListView l, View v, int pos, long id)
+	{
+		L.d("listItemClick " + pos);
+		selectedDay = pos;
+		switchToScreen(Screen.DAY_MENU);
 	}
 
 	private void downloadXML()
